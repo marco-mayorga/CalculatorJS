@@ -1,7 +1,18 @@
+:root {
+    --background-color: white;
+    --mathOperators-button-color: #ff9500;
+    --top-row-color: #d4d4d2;
+    --number-buttons-color: #505050;
+    --calc-body-color: #282828;
+    --white: white;
+    --black: black;
+
+}
+
 body{
     margin: 0;
     padding: 0;
-    background-color: white;
+    background-color: var(--background-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,7 +25,7 @@ body{
     width: 29rem;
     height: 36rem;
     border-radius: 1rem;
-    background-color: #282828;
+    background-color: var(--calc-body-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,7 +40,7 @@ body{
     flex-direction: column;
     border-radius: 1rem;
     background-color: black;
-    color: white;
+    color: var(--white);
 }
 .topHalfOfScreen{
     height: 30%;
@@ -66,62 +77,62 @@ body{
 
 .button {
     border: 0;
-    color: white;
+    color: var(--white);
     border-radius: .5rem;
     font-size: 1.6em;
 }
 
 #AC{
     grid-area: AC;
-    background-color: #d4d4d2;
-    color: black;
+    background-color: var(--top-row-color);
+    color: var(--black);
 }
 
 #C{
     grid-area: C;
-    background-color: #d4d4d2;
-    color: black;
+    background-color: var(--top-row-color);
+    color: var(--black);
 }
 
 #percent {
     grid-area: percent;
-    background-color: #d4d4d2;
-    color: black;
+    background-color: var(--top-row-color);
+    color: var(--black);
 }
 #divide{
     grid-area: divide;
-    background-color: #ff9500;
+    background-color: var(--mathOperators-button-color);
 }
 
 #multiply {
     grid-area: multiplication;
-    background-color: #ff9500;
+    background-color: var(--mathOperators-button-color);
 }
 
 #subtract {
     grid-area: minus;
-    background-color: #ff9500;
+    background-color: var(--mathOperators-button-color);
 }
 
 #add {
     grid-area: addition;
-    background-color: #ff9500;
+    background-color: var(--mathOperators-button-color);
 }
 #equal{
     grid-area: equalSign;
-    background-color: #ff9500;
+    background-color: var(--mathOperators-button-color);
 }
 
 #dot {
     grid-area: dot;
-    background-color: #505050;
+    background-color: var(--number-buttons-color);
 }
 
 .zero {
     grid-area: zero;
 }
 .number{
-    background-color: #505050;
+    background-color: var(--number-buttons-color);
 }
 
 footer{
@@ -133,6 +144,6 @@ footer{
     font-size: large;
 }
 footer a{
-    color: black;
+    color: var(--black);
     margin-top: auto;
 }
