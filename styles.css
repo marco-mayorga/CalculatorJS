@@ -1,25 +1,29 @@
-Html body{
+body{
     margin: 0;
     padding: 0;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 100vh;
+    font-family: 'Roboto Mono', monospace;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 .calculatorBody{
-    width: 28rem;
-    height: 38rem;
+    width: 29rem;
+    height: 36rem;
     border-radius: 1rem;
-    background-color: black;
+    background-color: #282828;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
+    gap: 2rem;
 }
 
 .screen{
-    width: 26rem;
+    width: 28rem;
     height: 8rem;
     display: flex;
     flex-direction: column;
@@ -30,75 +34,105 @@ Html body{
 .topHalfOfScreen{
     height: 30%;
     display: flex;
-    align-items: end;
+    align-items: center;
     justify-content: end;
+    margin-right: 1rem;
+    font-size: 1.2em;
 }
 .bottomHalfOfScreen{
     height: 70%;
     display: flex;
     align-items: end;
     justify-content: end;
-    margin-right: .5rem;
+    margin-right: 1rem;
     margin-bottom: .5rem;
+    font-size: 2.6em;
 }
 
 .buttonHolder{
     display: grid;
     grid-template-columns: repeat(4, 6.5rem);
-    grid-template-rows: repeat(6, 4.3rem);
-    justify-self: stretch;
+    grid-template-rows: repeat(5, 4.3rem);
+    justify-self: center;
     grid-template-areas:
         "AC C percent divide"
         "number number number multiplication"
         "number number number minus"
         "number number number addition"
-        "zero zero dot equalSign"
+        "zero zero dot equalSign";
+    column-gap: .5rem;
+    row-gap: .5rem;
 }
 
 .button {
-    background-color: orange;
     border: 0;
     color: white;
-    border-radius: 10rem;
-
+    border-radius: .5rem;
+    font-size: 1.6em;
 }
 
 #AC{
     grid-area: AC;
+    background-color: #d4d4d2;
+    color: black;
 }
 
 #C{
     grid-area: C;
+    background-color: #d4d4d2;
+    color: black;
 }
 
 #percent {
     grid-area: percent;
+    background-color: #d4d4d2;
+    color: black;
 }
 #divide{
     grid-area: divide;
+    background-color: #ff9500;
 }
 
 #multiply {
     grid-area: multiplication;
+    background-color: #ff9500;
 }
 
 #subtract {
     grid-area: minus;
+    background-color: #ff9500;
 }
 
 #add {
     grid-area: addition;
+    background-color: #ff9500;
 }
 #equal{
     grid-area: equalSign;
+    background-color: #ff9500;
 }
 
 #dot {
     grid-area: dot;
+    background-color: #505050;
 }
 
 .zero {
     grid-area: zero;
 }
+.number{
+    background-color: #505050;
+}
 
-
+footer{
+    position: absolute;
+    bottom: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+}
+footer a{
+    color: black;
+    margin-top: auto;
+}
