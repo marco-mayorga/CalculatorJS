@@ -1,6 +1,6 @@
 // getting Screens
-const topScreen = document.querySelector(".topHalfOfScreen")
-const bottomScreen = document.querySelector(".bottomHalfOfScreen")
+const topScreen = document.querySelector(".topHalfOfScreen");
+const bottomScreen = document.querySelector(".bottomHalfOfScreen");
 
 // Getting all buttons
 const AC = document.getElementById("AC");
@@ -23,106 +23,95 @@ const two = document.getElementById("two");
 const three = document.getElementById("three");
 const zero = document.getElementById("zero");
 
-// Getting All Numbers at once
-let numberButtons = document.querySelectorAll(".number")
-numberButtons.forEach(button => {
+// all num buttons
+let numberButtons = document.querySelectorAll(".number");
+
+// all operatorButtons
+let mathOperators = document.querySelectorAll(".mathOperators");
+
+// All buttons
+let allButtons = document.querySelectorAll(".button");
+
+// topScreen innerItems
+let buttonArray = [];
+
+
+// adding all buttons to top screen and buttonArray when clicked
+allButtons.forEach(button =>{
     button.addEventListener("click", ()=>{
-        populateTopScreen(button.value)
+        populateTopScreen(button.innerHTML);
     });
 })
 
+numberButtons.forEach(button => {
+    button.addEventListener("onkeypress", ()=>{
+        button.
+    })
+})
+
+
+
 // Populating Top Screen
-let buttonArray = []
-function populateTopScreen (buttonPressed) {
-    buttonArray.push(buttonPressed)
-    topScreen.innerHTML = buttonArray.join("")
-};
+function populateTopScreen(buttonPressed) {
+        buttonArray.push(buttonPressed);
+        topScreen.innerHTML = buttonArray.join("");
+        num1Andnum2 = topScreen.innerHTML.split(/[\+\-X\/]/);
+        num1 = num1Andnum2[0];
+        num2 = num1Andnum2[1];
+        // calls operate after = is pressed
+        equal.addEventListener("click", ()=>{
 
-// Populate bottom screen
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Takes an operator and 2 numbers and then calls a
-// function on the numbers
-
-
-
-// Addition Func
-add.addEventListener("click", () =>{
-    populateTopScreen(add.innerHTML)
-});
-function additionFunc (numbers){
-    if (numbers.length === 0) {
-        return 0;
-    } else {
-        sum = numbers.reduce((firstNum, secondNum) => {
-            return firstNum + secondNum
-        });
-        return sum
-    }
-};
-
-// Subtraction Func
-subtract.addEventListener("click", () =>{
-    populateTopScreen(subtract.innerHTML)
-});
-function subtractionFunc (numbers){
-    if (numbers.length === 0) {
-        return 0;
-    } else {
-        sum = numbers.reduce((firstNum, secondNum) => {
-            return firstNum - secondNum
-        });
-        return sum
-    }
-};
-
-// Division Func
-divide.addEventListener("click", () =>{
-    populateTopScreen(divide.innerHTML)
-});
-function divisionFunc (numbers){
-    if (numbers.length === 0) {
-        return 0;
-    } else {
-        sum = numbers.reduce((firstNum, secondNum) => {
-            return firstNum / secondNum
-        });
-        return sum
-    }
+            bottomScreen.innerHTML = operate(...buttonArray);
+        })
 };
 
 // Multiplication Func
-multiply.addEventListener("click", () =>{
-    populateTopScreen(multiply.innerHTML)
-});
-function multiplicationFunc (numbers){
-    if (numbers.length === 0) {
-        return 0;
-    } else {
-        sum = numbers.reduce((firstNum, secondNum) => {
-            return firstNum * secondNum
-        });
-        return sum
-    }
+function multiplicationFunc (Num1, Num2){
+    return Num1 * Num2;
 };
+
+// Addition Func
+function additionFunc (Num1, Num2){
+    return Num1 + Num2;
+    
+};
+
+// Subtraction Func
+function subtractionFunc (Num1, Num2){
+    return Num1 - Num2;
+};
+
+// Division Func
+function divisionFunc (Num1, Num2){
+    quotient = Num1 / Num2;
+    if (Num2 === 0){
+        bottomScreen.innerHTML = "You cant divide by 0";
+    }
+    return quotient;
+};
+
+// Takes an operator and 2 numbers and then calls a
+// function on the numbers
+function operate (Num1, operator, Num2) {
+    switch (operator) {
+        case "+":
+            return additionFunc(Num1, Num2);
+        case "-":
+           return subtractionFunc(Num1, Num2);
+        case "/":
+            return divisionFunc(Num1, Num2);
+        case "X":
+            return multiplicationFunc(Num1, Num2);
+    }
+}
 
 // Clear Screen
 AC.addEventListener("click", ()=>{
-    topScreen.innerHTML = ""
-    bottomScreen.innerHTML = ""
-    buttonArray = []
+    topScreen.innerHTML = "";
+    bottomScreen.innerHTML = "";
+    buttonArray = [];
+})
+
+C.addEventListener("click", ()=> {
+    topScreen.innerHTML.slice(0, -1);
 })
