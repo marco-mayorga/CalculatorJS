@@ -1,52 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Calculator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Google Fonts Import -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Source+Sans+Pro&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Style Sheet Import -->
-    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
-    <!-- JS Import -->
-    <script defer src="script.js"></script>
-  </head>
-  <body>
-    <div class="calculatorBody">
-      <div class="screen">
-        <div class="topHalfOfScreen">6+6</div>
-        <div class="bottomHalfOfScreen">12</div>
-      </div>
-      <div class="buttonHolder">
-        <button class="button" id="AC">AC</button>
-        <button class="button" id="C">C</button>
-        <button class="button mathOperators" id="percent">%</button>
-        <button class="button mathOperators" id="divide">/</button>
-        <button class="button mathOperators" id="multiply">X</button>
-        <button class="button mathOperators" id="subtract">-</button>
-        <button class="button mathOperators" id="add">+</button>
-        <button class="button mathOperators" id="equal">=</button>
-        <button class="button" id="dot">.</button>
-        <button class="button number" id="seven" value="7">7</button>
-        <button class="button number" id="eight" value="8">8</button>
-        <button class="button number" id="nine" value="9">9</button>
-        <button class="button number" id="four" value="4">4</button>
-        <button class="button number" id="five" value="5">5</button>
-        <button class="button number" id="six" value="6">6</button>
-        <button class="button number" id="one" value="1">1</button>
-        <button class="button number" id="two" value="2">2</button>
-        <button class="button number" id="three" value="3">3</button>
-        <button class="button number zero" id="zero" value="0">0</button>
-      </div>
-    </div>
-    <footer>
-      <a href="https://marcomayorga.com/"> Created By Marco Mayorga</a>
-    </footer>
-  </body>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Calculator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Google Fonts Import -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Source+Sans+Pro&display=swap"
+            rel="stylesheet" />
+        <!-- Style Sheet Import -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            media="screen"
+            href="styles.css" />
+        <!-- JS Import -->
+        <script defer src="script.js"></script>
+    </head>
+    <body>
+        <div class="calculatorBody">
+            <div class="screen">
+                <div class="previousOperand"></div>
+                <div class="currentOperand"></div>
+            </div>
+            <div class="buttonHolder">
+                <button class="button" id="AC">AC</button>
+                <button class="button" id="negative">+/-</button>
+                <button class="button" id="percent">%</button>
+                <button class="button mathOperators" id="divide">/</button>
+                <button class="button mathOperators" id="multiply">*</button>
+                <button class="button mathOperators" id="subtract">-</button>
+                <button class="button mathOperators" id="add">+</button>
+                <button class="button" id="equal">=</button>
+                <button class="button number" id="dot">.</button>
+                <button class="button number" id="seven">7</button>
+                <button class="button number" id="eight">8</button>
+                <button class="button number" id="nine">9</button>
+                <button class="button number" id="four">4</button>
+                <button class="button number" id="five">5</button>
+                <button class="button number" id="six">6</button>
+                <button class="button number" id="one">1</button>
+                <button class="button number" id="two">2</button>
+                <button class="button number" id="three">3</button>
+                <button class="button number zero" id="zero">0</button>
+            </div>
+        </div>
+        <footer>
+            <a href="https://marcomayorga.com/"> Created By Marco Mayorga</a>
+        </footer>
+    </body>
 </html>

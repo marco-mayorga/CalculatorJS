@@ -1,117 +1,154 @@
-// getting Screens
-const topScreen = document.querySelector(".topHalfOfScreen");
-const bottomScreen = document.querySelector(".bottomHalfOfScreen");
-
-// Getting all buttons
-const AC = document.getElementById("AC");
-const C = document.getElementById("C");
-const percent = document.getElementById("percent");
-const divide = document.getElementById("divide");
-const multiply = document.getElementById("multiply");
-const subtract = document.getElementById("subtract");
-const add = document.getElementById("add");
-const equal = document.getElementById("equal");
-const dot = document.getElementById("dot");
-const seven = document.getElementById("seven");
-const eight = document.getElementById("eight");
-const nine = document.getElementById("nine");
-const four = document.getElementById("four");
-const five = document.getElementById("five");
-const six = document.getElementById("six");
-const one = document.getElementById("one");
-const two = document.getElementById("two");
-const three = document.getElementById("three");
-const zero = document.getElementById("zero");
-
-// all num buttons
-let numberButtons = document.querySelectorAll(".number");
-
-// all operatorButtons
-let mathOperators = document.querySelectorAll(".mathOperators");
-
-// All buttons
-let allButtons = document.querySelectorAll(".button");
-
-// topScreen innerItems
-let buttonArray = [];
+// TO-DO
+    // Finish percentage button
+    // Finsih keyboard functionality
+    // Finish Negative num functionality
 
 
-// adding all buttons to top screen and buttonArray when clicked
-allButtons.forEach(button =>{
-    button.addEventListener("click", ()=>{
-        populateTopScreen(button.innerHTML);
-    });
-})
+class Calculator
+{
+    constructor(topScreen, bottomScreen){
+        this.topScreen = topScreen;
+        this.bottomScreen = bottomScreen;
+        this.clear();
 
-numberButtons.forEach(button => {
-    button.addEventListener("onkeypress", ()=>{
-        button.
-    })
-})
-
-
-
-// Populating Top Screen
-function populateTopScreen(buttonPressed) {
-        buttonArray.push(buttonPressed);
-        topScreen.innerHTML = buttonArray.join("");
-        num1Andnum2 = topScreen.innerHTML.split(/[\+\-X\/]/);
-        num1 = num1Andnum2[0];
-        num2 = num1Andnum2[1];
-        // calls operate after = is pressed
-        equal.addEventListener("click", ()=>{
-
-            bottomScreen.innerHTML = operate(...buttonArray);
-        })
-};
-
-// Multiplication Func
-function multiplicationFunc (Num1, Num2){
-    return Num1 * Num2;
-};
-
-// Addition Func
-function additionFunc (Num1, Num2){
-    return Num1 + Num2;
-    
-};
-
-// Subtraction Func
-function subtractionFunc (Num1, Num2){
-    return Num1 - Num2;
-};
-
-// Division Func
-function divisionFunc (Num1, Num2){
-    quotient = Num1 / Num2;
-    if (Num2 === 0){
-        bottomScreen.innerHTML = "You cant divide by 0";
     }
-    return quotient;
-};
+    clear(){
+        this.currentOperand = '';
+        this.previousOperand = '';
+        this.operation = undefined;
+    }
+    percent(){
+        // TO-DO
+    }
+    sign(){}
+    delete(){
+        this.currentOperand = this.currentOperand.toString().slice(0,-1);
+    }
+    appendNum(number){
+        if (number === '.' && this.currentOperand.includes('.')) return
+        this.currentOperand = this.currentOperand.toString() + number.toString();
 
-// Takes an operator and 2 numbers and then calls a
-// function on the numbers
-function operate (Num1, operator, Num2) {
-    switch (operator) {
-        case "+":
-            return additionFunc(Num1, Num2);
-        case "-":
-           return subtractionFunc(Num1, Num2);
-        case "/":
-            return divisionFunc(Num1, Num2);
-        case "X":
-            return multiplicationFunc(Num1, Num2);
+    }
+    // Takes an operator and 2 numbers and then calls a
+    // function on the numbers
+    chooseOperation(operation){
+        if (this.currentOperand === '') return
+        if (this.previousOperand !== ''){
+            this.compute();
+        }
+        this.operation = operation;
+        this.previousOperand = this.currentOperand;
+        this.currentOperand = '';
+
+    }
+    compute(){
+        let computation;
+        const previousVariable = parseFloat(this.previousOperand);
+        const currentVariable = parseFloat(this.currentOperand);
+        if (isNaN(previousVariable) || isNaN(currentVariable)) return
+        switch(this.operation){
+            case '+':
+                computation = previousVariable + currentVariable;
+                break;
+            case '-':
+                computation = previousVariable - currentVariable;
+                break;
+            case '*':
+                computation = previousVariable * currentVariable;
+                break;
+            case '/':
+                if (currentVariable === 0){
+                    computation =  'You Can\'t Divide By 0!'
+                }else{
+                    computation = previousVariable / currentVariable;
+                }
+                break;
+            default:
+                return
+        }
+        this.currentOperand = computation;
+        this.operation = undefined;
+        this.previousOperand = '';
+    }
+    updateDisplay(){
+        this.bottomScreen.innerHTML = this.currentOperand;
+        if (this.operation != null){
+            this.topScreen.innerHTML = `${this.previousOperand} ${this.operation}`
+        } else{
+            this.topScreen.innerHTML = '';
+        }
     }
 }
 
-// Clear Screen
-AC.addEventListener("click", ()=>{
-    topScreen.innerHTML = "";
-    bottomScreen.innerHTML = "";
-    buttonArray = [];
+
+// Get Screens
+const topScreen = document.querySelector('.previousOperand');
+const bottomScreen = document.querySelector('.currentOperand');
+
+// Get all buttons
+// Equals button
+const equal = document.getElementById('equal');
+// All num buttons
+let numberButtons = document.querySelectorAll('.number');
+// All operatorButtons
+let mathOperators = document.querySelectorAll('.mathOperators');
+// All buttons
+let allButtons = document.querySelectorAll('.button');
+const AC = document.getElementById('AC');
+const negative = document.getElementById('negative');
+const percent = document.getElementById('percent');
+const dot = document.getElementById('dot');
+const add = document.getElementById('add');
+const subtract = document.getElementById('subtract');
+const multiply = document.getElementById('multiply');
+const divide = document.getElementById('divide');
+
+
+// New object
+const calculator = new Calculator(topScreen, bottomScreen);
+
+// Clears screen
+AC.addEventListener('click', ()=>{
+    calculator.clear();
+    calculator.updateDisplay();
 })
 
-C.addEventListener("click", ()=> {
-    topScreen.innerHTML.slice(0, -1);
+numberButtons.forEach(button => {
+    button.addEventListener('click', () =>{
+        calculator.appendNum(button.innerHTML);
+        calculator.updateDisplay()
+    })
+})
+
+mathOperators.forEach(button => {
+    button.addEventListener('click', () =>{
+        calculator.chooseOperation(button.innerHTML);
+        calculator.updateDisplay()
+    })
+})
+
+equal.addEventListener('click', ()=>{
+    calculator.compute();
+    calculator.updateDisplay();
+})
+
+
+// Adds button functionality
+window.addEventListener('keydown', (event)=>{
+    if (event.defaultPrevented) {
+        return; // Do nothing if the event was already processed
+      }
+    switch (event.key){
+        case 'Backspace':
+            calculator.delete();
+            calculator.updateDisplay();
+// To-DO
+            // case 'Enter':
+        // case 'Add':
+        // case 'Subtract':
+        // case 'Multiply':
+        // case 'Divide':
+        default:
+            return;
+    }
 })
