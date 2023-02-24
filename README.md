@@ -1,7 +1,7 @@
-<h1 align="center"> CalculatorJS </h1>
+# CalculatorJS
 
-<h5 align="center">Simple HTML, CSS and JS calculator</h5>
+## Simple HTML, CSS and JS calculator
 
-<p>Inspired by the Odin Project</p>
+Inspired by the Odin Project
 
 [Live Deployment]([https://pages.github.com/](https://marcomayorga.com/CalculatorJS/)).
